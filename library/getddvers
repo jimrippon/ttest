@@ -1,0 +1,13 @@
+#!/bin/bash
+
+ddvers=$(dpkg -s datadog-agent | awk -F: '$1 ~ "^Version"{ print $NF }')
+jsonpathver=$(pip freeze | grep jsonpath-rw)
+
+cat <<EOF
+{
+	"ansible_facts" : {
+		"datadogver" : "$ddvers",
+		"jsonpathver" : "$jsonpathver"
+	}
+}
+EOF
