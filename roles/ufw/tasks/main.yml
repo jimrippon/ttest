@@ -1,0 +1,21 @@
+---
+
+- name: enable ufw logging
+  ufw: logging=on
+  sudo: true
+
+- name: ufw rate-limited ssh rule
+  ufw: rule=limit port=ssh proto=tcp
+  sudo: true
+
+- name: ufw permit rfc1918 rule
+  ufw: rule=allow src={{ item }}
+  with_items:
+    - 10.0.0.0/8
+    - 172.16.0.0/12
+    - 192.168.0.0/16
+  sudo: true
+
+- name: enable ufw in blocking mode
+  ufw: state=enabled policy=deny
+  sudo: true

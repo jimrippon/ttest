@@ -1,0 +1,5 @@
+---
+
+- name: update system
+  apt: upgrade=dist update_cache=yes cache_valid_time=86400 dpkg_options='force-confold,force-confdef'
+  sudo: true

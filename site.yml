@@ -1,7 +1,8 @@
 ---
-# This playbook should update datadog-agent where applicable and install required pip package jsonpath-rw as appropriate
 
-  - name: Update datadog across all servers where its required
+  - name: Update all hosts provided from inventory/commandline and enable ufw
     hosts: all
     roles:
-      - common
+      - update
+      - ufw
+      - reboot
