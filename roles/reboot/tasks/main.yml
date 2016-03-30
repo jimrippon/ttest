@@ -12,7 +12,7 @@
   sudo: false
 
 - name: Pause briefly for ssh to be responsive
-  pause: seconds=15
+  pause: seconds=30
 
 - name: Get uptime output
   shell: uptime
@@ -20,5 +20,5 @@
   sudo: false
 
 - name: Display output
-  debug: msg=result.stdout
+  debug: msg="{{ output.stdout }}"
 
